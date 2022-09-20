@@ -27,7 +27,7 @@ Resources:
   BankTx:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: !Sub 'awscodestar-${ProjectId}-lambda-HelloWorld'
+      FunctionName: !Sub 'awscodestar-${ProjectId}-lambda-BankTx'
       Handler: index.handler
       Runtime: python3.7
       Role:
@@ -62,4 +62,11 @@ Resources:
       PermissionsBoundary: !Sub 'arn:${AWS::Partition}:iam::${AWS::AccountId}:policy/CodeStar_${ProjectId}_PermissionsBoundary'
   S3Bucket:
     Type: AWS::S3::Bucket
-  
+    Description: Root S3 Bucket for BankTx
+    Properties:
+      BucketName: BankTxLZ
+  Outputs:
+    S3Bucket:
+      Description: Bucket created using CF template for BankTX
+      Value: !Ref S3Bucket
+      
