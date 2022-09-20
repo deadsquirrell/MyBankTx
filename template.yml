@@ -24,7 +24,7 @@ Globals:
       Role: !Ref CodeDeployRole
 
 Resources:
-  HelloWorld:
+  BankTx:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName: !Sub 'awscodestar-${ProjectId}-lambda-HelloWorld'
@@ -60,3 +60,6 @@ Resources:
       ManagedPolicyArns:
         - !Sub 'arn:${AWS::Partition}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole'
       PermissionsBoundary: !Sub 'arn:${AWS::Partition}:iam::${AWS::AccountId}:policy/CodeStar_${ProjectId}_PermissionsBoundary'
+  S3Bucket:
+    Type: AWS::S3::Bucket
+  
